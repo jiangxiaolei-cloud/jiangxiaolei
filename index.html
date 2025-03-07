@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>美食选择</title>
+    <style>
+        .food-item {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        .cart {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>选择你的美食</h1>
+    <div class="food-item" onclick="addToCart('火锅')">火锅</div>
+    <div class="food-item" onclick="addToCart('烤肉')">烤肉</div>
+    <div class="food-item" onclick="addToCart('自助餐')">自助餐</div>
+    <div class="food-item" onclick="addToCart('粉面')">粉面</div>
+    <div class="food-item" onclick="addToCart('烤鱼')">烤鱼</div>
+
+    <div class="cart">
+        <h2>购物车</h2>
+        <ul id="cart-list">
+            <!-- 购物车内容将显示在这里 -->
+        </ul>
+    </div>
+
+    <script>
+        var cart = [];
+
+        function addToCart(food) {
+            cart.push(food);
+            updateCart();
+        }
+
+        function updateCart() {
+            var cartList = document.getElementById('cart-list');
+            cartList.innerHTML = '';
+            cart.forEach(function(item, index) {
+                var li = document.createElement('li');
+                li.textContent = item;
+                cartList.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
